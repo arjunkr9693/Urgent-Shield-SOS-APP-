@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background"
+    tools:context=".ProfileInput">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/profile_sample"
+        app:tint="#E4FFFFFF" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/usernameET"
+        android:inputType="textPersonName"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/et_back"
+        android:gravity="center"
+        android:hint="Enter Your Name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/userNumberET"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/et_back"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
+        android:hint="Enter Your Number"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/userEmailET"
+        android:layout_marginTop="20dp"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/et_back"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
+        android:hint="Enter Your Email"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/parentNumberET"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:inputType="numberDecimal"
+        android:background="@drawable/et_back"
+        android:gravity="center"
+        android:hint="Enter Parent Number"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:id="@+id/saveProfileBtn"
+        android:layout_marginHorizontal="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/gradient_back"
+        android:gravity="center"
+        android:hint="Save"/>
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_background"
+    android:orientation="vertical">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="17dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/navbar_back"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navbar_items" />
+
+</LinearLayout>
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--android:orientation="vertical"-->
+<!--android:background="@drawable/home_background"-->
+<!--android:id="@+id/linearLayout"-->
+<!--tools:context=".HomeActivity">-->
+
+
+<!--<FrameLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:id="@+id/frameLayout"-->
+<!--    android:layout_weight="1"-->
+<!--    android:layout_height="0dp">-->
+<!--</FrameLayout>-->
+
+<!--<com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="60dp"-->
+<!--    android:id="@+id/navigationView"-->
+<!--    android:layout_marginTop="15dp"-->
+<!--    android:layout_marginBottom="10dp"-->
+<!--    app:labelVisibilityMode="labeled"-->
+<!--    app:menu="@menu/navbar_items"-->
+<!--    android:layout_marginHorizontal="17dp"-->
+<!--    android:background="@drawable/navbar_back"-->
+<!--    />-->
+
+
+<!--</LinearLayout>-->

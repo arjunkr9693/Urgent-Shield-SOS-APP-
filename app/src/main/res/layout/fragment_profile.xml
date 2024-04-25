@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/home_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileFragment">
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#85A52A2A"
+        android:layout_marginTop="25sp"
+        android:id="@+id/editProfileBtn"
+        android:layout_gravity="end"
+        android:layout_marginEnd="15dp"
+        android:paddingStart="14dp"
+        android:background="@drawable/gradient_back"
+        android:drawableTint="@color/white"
+        app:drawableLeftCompat="@drawable/baseline_edit_square_24" />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/profile_sample"
+        app:tint="#E4FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userName1"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#E4FFFFFF"
+        android:layout_marginTop="20dp"
+        android:textSize="25sp"
+        />
+
+    <TextView
+        android:id="@+id/userName2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="30sp"
+        android:background="@drawable/profile_tv_back"
+        android:drawablePadding="12dp"
+        android:drawableTint="#5E0909"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:drawableLeftCompat="@drawable/baseline_person_24" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:id="@+id/userNumber"
+        android:layout_marginTop="25sp"
+        android:paddingStart="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/profile_tv_back"
+        android:textColor="@color/white"
+        android:drawableTint="#5E0909"
+        android:drawablePadding="12dp"
+        app:drawableLeftCompat="@drawable/contact_logo" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:id="@+id/userEmail"
+        android:layout_marginTop="25sp"
+        android:paddingStart="15dp"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/profile_tv_back"
+        android:textColor="@color/white"
+        android:drawableTint="#5E0909"
+        android:drawablePadding="12dp"
+        app:drawableLeftCompat="@drawable/baseline_email_24" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="Parent Contact No:"
+        android:paddingStart="5dp"
+        android:layout_marginTop="45sp"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="40dp"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
+        android:paddingStart="15dp"
+        android:id="@+id/parentNumber"
+        android:gravity="center_vertical"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/profile_tv_back"
+        android:textColor="@color/white"
+        android:drawableTint="#5E0909"
+        android:drawablePadding="12dp"
+        app:drawableLeftCompat="@drawable/contact_logo" />
+
+
+
+</LinearLayout>

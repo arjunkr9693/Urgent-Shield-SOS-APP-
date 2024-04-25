@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1003608545853",
+    "project_id": "urgent-shield",
+    "storage_bucket": "urgent-shield.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003608545853:android:606c7ca091b483c2e8e854",
+        "android_client_info": {
+          "package_name": "com.example.urgentshield"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7SPrmZauJciY7e7yL_qVGTISJczf0ESM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

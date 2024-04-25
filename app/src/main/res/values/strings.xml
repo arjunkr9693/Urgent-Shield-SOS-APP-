@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Urgent Shield</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="SOS_Descriptiion">Press the SOS button, your live location will be shared with the nearest help centre and your emergency contacts</string>
+    <string name="fireMessage">Fire emergency! Need help now to stop it. Please hurry.</string>
+
+    <!-- Messages related to different type of emergencies   -->
+    <string name="medicalMessage">Emergency! Medical crisis, urgent aid needed. Please send medical help quickly.</string>
+    <string name="resqueMessage">Urgent! Trapped or stranded, need rescue. Please send help as soon as possible.</string>
+    <string name="accidentMessage">Help needed! Involved in an accident, urgent assistance required. Please send help.</string>
+    <string name="violenceMessage">Emergency situation! Facing violence, need help immediately. Please send assistance.</string>
+    <string name="naturalDisMessage">Emergency alert! Caught in a natural disaster, need urgent rescue and aid.</string>
+    <string name="sosMessage">In an emergency situation. Please help! Need urgent assistance</string>
+
+
+</resources>
