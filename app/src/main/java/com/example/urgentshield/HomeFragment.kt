@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
 import android.telephony.SmsManager
 import android.util.Log
 import android.view.LayoutInflater
@@ -129,6 +128,7 @@ class HomeFragment : Fragment() {
                     val totalContact = ArrayList<String>()
                     var numberToShareInfo = ""
 
+                    notificationManager.cancelAll()     // Remove all notification if present
                     // Send Notification that SOS is Activated
                     val notification = SOS_Notification.CreateNotification(requireContext(), NOTIFICATION_ID, "SOS Activated", "Tap STOP to Deactivate")
                     notificationManager.notify(NOTIFICATION_ID, notification)
@@ -265,10 +265,11 @@ class HomeFragment : Fragment() {
         if(!sos_trigger) {
             sos_trigger = true
             rippleBackground.stopRippleAnimation()
+
+            notificationManager.cancelAll()     // Remove all notification if present
             val notification = SOS_Notification.CreateNotification(requireContext(), NOTIFICATION_ID, "SOS Activated", "Tap STOP to Deactivate")
             notificationManager.notify(NOTIFICATION_ID, notification)
 
-            // Send SMS to phone number
 //            val totalContacts = getContactDataFromSharedPreferences()
             totalContacts = arrayListOf(phoneNumber, "+918271627510")
             message = getString(R.string.sosMessage) +"\n" + getUserData() + "Location: "
@@ -322,7 +323,7 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
-            }, 10000)
+            }, 5000)
         }
         else{
             PermissionAllUtils.requestForPermission(requireActivity(), requireContext(), arrayOf(Manifest.permission.SEND_SMS), REQUEST_MESSAGE_CODE)

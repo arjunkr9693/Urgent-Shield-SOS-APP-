@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -31,11 +30,12 @@ class HomeActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
         val loggedInBefore = sharedPreferences.getBoolean("loggedInBefore", false)
-        if(!loggedInBefore){
+        if (!loggedInBefore) {
             startActivity(Intent(this, ProfileInput::class.java))
         }
+
         PermissionAllUtils.requestAllPermission(this, this)
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.navigationView)
+        bottomNavigation = findViewById(R.id.navigationView)
         bottomNavigation.itemTextColor = ContextCompat.getColorStateList(this, R.color.navbar_item_colors)
         bottomNavigation.itemIconTintList = ContextCompat.getColorStateList(this, R.color.navbar_item_colors)
 
@@ -57,6 +57,7 @@ class HomeActivity : AppCompatActivity() {
         pagerAdapter.addFragment(ProfileFragment())
         viewPager.adapter = pagerAdapter
         viewPager.addOnPageChangeListener(onPageChangeListener)
+        viewPager.offscreenPageLimit = 3 // Retain 3 pages on either side of the current page
     }
 
     private fun setupBottomNavigation() {
@@ -71,6 +72,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 }
+
 
 //import android.content.pm.PackageManager
 //import android.os.Build
