@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

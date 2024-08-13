@@ -51,4 +51,5 @@ dependencies {
     implementation ("com.skyfishjy.ripplebackground:library:1.0.1")
     implementation ("com.github.veeyaarVR:SuperGradientTextView:1.1")
     implementation ("com.google.android.gms:play-services-location:21.2.0")
+    implementation ("com.intuit.sdp:sdp-android:1.0.6")
 }

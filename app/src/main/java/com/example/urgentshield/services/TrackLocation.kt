@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.services
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,17 +7,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import android.os.Bundle
 import android.os.Handler
 import android.os.IBinder
-import android.telephony.SmsManager
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import com.example.urgentshield.SOS_Notification
+import com.example.urgentshield.data.LocationData
+import com.example.urgentshield.ui.homeFragments.HomeFragment
 import com.google.android.gms.location.*
-import com.google.firebase.Firebase
 import com.google.firebase.database.FirebaseDatabase
 import java.util.Timer
 import java.util.TimerTask
@@ -42,7 +40,7 @@ class TrackLocation : Service() {
         private const val TAG = "TrackLocation"
         private const val NOTIFICATION_ID = 123
         private const val CHANNEL_ID = "LocationForegroundServiceChannel"
-        private const val STOP_SERVICE_DELAY_MS = 120000L // 2 minutes
+        private const val STOP_SERVICE_DELAY_MS = 552120000L // 2 minutes
         private const val SMS_INTERVAL_MS = 20000L // 20 seconds
         private const val DESTINATION_PHONE_NUMBER = "+918228033862"
     }
@@ -74,7 +72,12 @@ class TrackLocation : Service() {
         createLocationCallback()
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notification = SOS_Notification.CreateNotification(this, NOTIFICATION_ID, "SOS Service is running", "Your information is being shared. Tap STOP button to Deactivate the service")
+        val notification = SOS_Notification.CreateNotification(
+            this,
+            NOTIFICATION_ID,
+            "SOS Service is running",
+            "Your information is being shared. Tap STOP button to Deactivate the service"
+        )
         startForeground(NOTIFICATION_ID, notification)
 
 

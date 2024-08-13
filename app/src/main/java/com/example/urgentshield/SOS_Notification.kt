@@ -4,12 +4,11 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.ClipDescription
 import android.content.Context
 import android.content.Intent
-import android.icu.text.CaseMap.Title
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import com.example.urgentshield.ui.main.HomeActivity
 
 object SOS_Notification {
     private val CHANNEL_ID = "MyNotificationChannel"

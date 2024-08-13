@@ -4,29 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity"
+    tools:context=".ui.main.HomeActivity"
     android:background="@drawable/home_background"
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/linearLayout">
 
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Urgent Shield"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textColor="@color/colorYellow"-->
-<!--            android:textStyle="bold|italic"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            />-->
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="270dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_marginHorizontal="20dp"
             app:cardCornerRadius="30dp"
@@ -40,14 +29,15 @@
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingVertical="25dp"
+                    >
 
                     <TextView
                         android:id="@+id/textView"
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="18sp"
                         android:textColor="@color/colorLightGray"
                         android:text="Are you in an Emergency?"
                         android:textSize="25sp"
@@ -62,7 +52,7 @@
                         android:layout_marginTop="20dp"
                         android:textColor="@color/colorLightGray"
                         android:text="@string/SOS_Descriptiion"
-                        android:textSize="15sp"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -125,100 +115,112 @@
 
             />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp"
-            >
-            <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
                 android:id="@+id/medicalBtn"
                 android:layout_width="110dp"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/medical_logo"
-                android:text="Medical"
-                android:drawablePadding="-7dp"
-                android:layout_marginRight="15dp"
-                android:paddingLeft="10dp"
-                android:textAllCaps="false"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/purple_700"
                 android:background="@drawable/emergency_type_btn"
-                />
-            <androidx.appcompat.widget.AppCompatButton
+                android:drawableLeft="@drawable/medical_logo"
+                android:drawablePadding="-7dp"
+                android:paddingLeft="10dp"
+                android:text="Medical"
+                android:textAllCaps="false"
+                android:textColor="@color/purple_700"
+                android:textSize="14sp" />
+
+            <Button
                 android:id="@+id/fireBtn"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
+                android:background="@drawable/emergency_type_btn"
                 android:drawableLeft="@drawable/baseline_local_fire_department_24"
-                android:text="Fire"
                 android:drawablePadding="-7dp"
-                android:layout_marginRight="15dp"
                 android:paddingLeft="10dp"
+                android:text="Fire"
                 android:textAllCaps="false"
                 android:textColor="@color/purple_700"
-                android:background="@drawable/emergency_type_btn"
-                />
-            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="14sp" />
+
+            <Button
                 android:id="@+id/naturalDis"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
-                android:drawablePadding="-6dp"
+                android:background="@drawable/emergency_type_btn"
                 android:drawableLeft="@drawable/earthquake"
-                android:text="Natural Disaster"
+                android:drawablePadding="-6dp"
                 android:paddingLeft="10dp"
-
+                android:text="Natural Disaster"
                 android:textAllCaps="false"
                 android:textColor="@color/purple_700"
-                android:background="@drawable/emergency_type_btn"
-                />
-        </LinearLayout>
+                android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <androidx.appcompat.widget.AppCompatButton
+            <Button
                 android:id="@+id/accidentBtn"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/accident"
-                android:text="Accident"
-                android:drawablePadding="-7dp"
-                android:layout_marginRight="15dp"
-                android:paddingLeft="10dp"
-                android:textAllCaps="false"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/purple_700"
                 android:background="@drawable/emergency_type_btn"
-                />
-            <androidx.appcompat.widget.AppCompatButton
+                android:drawableLeft="@drawable/accident"
+                android:drawablePadding="-7dp"
+                android:paddingLeft="10dp"
+                android:text="Accident"
+                android:textAllCaps="false"
+                android:textColor="@color/purple_700"
+                android:textSize="14sp" />
+
+            <Button
                 android:id="@+id/violenceBtn"
                 android:layout_width="130dp"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/violetion"
-                android:text="Violence"
+                android:background="@drawable/emergency_type_btn"
+                android:drawableStart="@drawable/violetion"
                 android:drawablePadding="-7dp"
-                android:layout_marginRight="15dp"
-                android:paddingLeft="20dp"
+                android:minHeight="48dp"
+                android:paddingStart="20dp"
+                android:text="Violence"
                 android:textAllCaps="false"
                 android:textColor="@color/purple_700"
-                android:background="@drawable/emergency_type_btn"
-                />
-            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="14sp" />
+
+            <Button
                 android:id="@+id/rescueBtn"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
+                android:background="@drawable/emergency_type_btn"
+                android:drawableStart="@drawable/rescue"
                 android:drawablePadding="-6dp"
-                android:drawableLeft="@drawable/rescue"
+                android:minHeight="48dp"
+                android:paddingStart="15dp"
                 android:text="Rescue"
-                android:paddingLeft="15dp"
                 android:textAllCaps="false"
                 android:textColor="@color/purple_700"
-                android:background="@drawable/emergency_type_btn"
-                />
-        </LinearLayout>
+                android:textSize="14sp" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp"
+                app:constraint_referenced_ids="fireBtn,naturalDis,medicalBtn,accidentBtn,violenceBtn,rescueBtn"
+                app:flow_horizontalAlign="start"
+                app:flow_horizontalStyle="spread_inside"
+                app:flow_maxElementsWrap="3"
+                app:flow_verticalGap="8dp"
+                app:flow_wrapMode="chain"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
 </ScrollView>

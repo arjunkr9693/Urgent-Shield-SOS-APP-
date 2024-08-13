@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.ui
 
 import android.app.Activity
 import android.content.Context
@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.urgentshield.R
 
 class ProfileInput : AppCompatActivity() {
 

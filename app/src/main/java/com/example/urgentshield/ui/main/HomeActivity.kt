@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.ui.main
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
+import com.example.urgentshield.ui.homeFragments.ContactFragment
+import com.example.urgentshield.ui.homeFragments.DevelopersFragment
+import com.example.urgentshield.PermissionAllUtils
+import com.example.urgentshield.ui.homeFragments.ProfileFragment
+import com.example.urgentshield.ui.ProfileInput
+import com.example.urgentshield.R
+import com.example.urgentshield.adapters.ViewPagerAdapter
+import com.example.urgentshield.ui.homeFragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -36,8 +44,12 @@ class HomeActivity : AppCompatActivity() {
 
         PermissionAllUtils.requestAllPermission(this, this)
         bottomNavigation = findViewById(R.id.navigationView)
-        bottomNavigation.itemTextColor = ContextCompat.getColorStateList(this, R.color.navbar_item_colors)
-        bottomNavigation.itemIconTintList = ContextCompat.getColorStateList(this, R.color.navbar_item_colors)
+        bottomNavigation.itemTextColor = ContextCompat.getColorStateList(this,
+            R.color.navbar_item_colors
+        )
+        bottomNavigation.itemIconTintList = ContextCompat.getColorStateList(this,
+            R.color.navbar_item_colors
+        )
 
         initializeViews()
         setupViewPager()

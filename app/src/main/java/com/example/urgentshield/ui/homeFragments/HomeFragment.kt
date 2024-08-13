@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.ui.homeFragments
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -23,7 +23,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.example.urgentshield.PermissionAllUtils
+import com.example.urgentshield.R
+import com.example.urgentshield.SOS_Notification
+import com.example.urgentshield.services.TrackLocation
 import com.skyfishjy.library.RippleBackground
 import java.util.Timer
 import java.util.TimerTask
@@ -49,8 +54,9 @@ class HomeFragment : Fragment() {
     private lateinit var rippleBackground: RippleBackground
     private lateinit var notificationManager: NotificationManager
     private lateinit var sosButton: ImageView
-    var totalContacts = ArrayList<String>()
-    var message = ""
+    private var totalContacts = ArrayList<String>()
+    private var message = ""
+    private var userId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,7 +101,12 @@ class HomeFragment : Fragment() {
                         sos_trigger = false
                         Log.d("SOSError", "Pressed STOP")
                         requireContext().stopService(Intent(requireContext(), TrackLocation::class.java))
-                        val notification = SOS_Notification.CreateNotification(requireContext(), 555, "SOS Deactivated", "Tap STOP to Deactivate")
+                        val notification = SOS_Notification.CreateNotification(
+                            requireContext(),
+                            555,
+                            "SOS Deactivated",
+                            "Tap STOP to Deactivate"
+                        )
                         Handler().postDelayed({
                             notificationManager.notify(NOTIFICATION_ID, notification)
                         }, 1500)
@@ -130,7 +141,12 @@ class HomeFragment : Fragment() {
 
                     notificationManager.cancelAll()     // Remove all notification if present
                     // Send Notification that SOS is Activated
-                    val notification = SOS_Notification.CreateNotification(requireContext(), NOTIFICATION_ID, "SOS Activated", "Tap STOP to Deactivate")
+                    val notification = SOS_Notification.CreateNotification(
+                        requireContext(),
+                        NOTIFICATION_ID,
+                        "SOS Activated",
+                        "Tap STOP to Deactivate"
+                    )
                     notificationManager.notify(NOTIFICATION_ID, notification)
                     // Intent for starting Track Location Service
                     val intent = Intent(requireContext(), TrackLocation::class.java)
@@ -138,32 +154,33 @@ class HomeFragment : Fragment() {
 
                     when (it) {
                         fireBtn -> {
-                            message = getString(R.string.fireMessage) + "\n" + getUserData() + "Location: "
+                            message = getString(R.string.fireMessage) + "\n" + getUserData()
                             numberToShareInfo = phoneNumber
+                            Log.d("MyLog", message)
                         }
 
                         medicalBtn -> {
-                            message = getString(R.string.medicalMessage) + "\n" + getUserData() + "Location: "
+                            message = getString(R.string.medicalMessage) + "\n" + getUserData()
                             numberToShareInfo = phoneNumber
                         }
 
                         accidentBtn -> {
-                            message = getString(R.string.accidentMessage) + "\n" + getUserData() + "Location: "
+                            message = getString(R.string.accidentMessage) + "\n" + getUserData()
                             numberToShareInfo = phoneNumber
                         }
 
                         violenceBtn -> {
-                            message = getString(R.string.violenceMessage) + "\n" + getUserData() + "Location: "
+                            message = getString(R.string.violenceMessage) + "\n" + getUserData()
                             numberToShareInfo = phoneNumber
                         }
 
                         rescueBtn -> {
-                            message = getString(R.string.resqueMessage) + "\n" + getUserData() + "Location: "
+                            message = getString(R.string.resqueMessage) + "\n" + getUserData()
                             numberToShareInfo = phoneNumber
                         }
 
                         naturalDisBtn -> {
-                            message = getString(R.string.naturalDisMessage) + "\n" + getUserData() + "Location: "
+                            message = getString(R.string.naturalDisMessage) + "\n" + getUserData()
                             numberToShareInfo = phoneNumber
                         }
                     }
@@ -171,6 +188,7 @@ class HomeFragment : Fragment() {
                     totalContact.add(numberToShareInfo)
                     // SMS sending and Calling
                     sendLocationSMS(message, totalContact)
+                    sendLocationSMS("\nurjentshield.pythonanywhere.com/location/fetch-location/?user_id=$userId\n", totalContact)
                     makePhoneCall(numberToShareInfo)
                 }
                 else{
@@ -205,14 +223,20 @@ class HomeFragment : Fragment() {
 
         val userDataBuilder = StringBuilder()
 
-        // Check if username is valid and add to userDataBuilder
+        // Check if userNumber is valid and add to userDataBuilder
+        if (userNumber?.isNotEmpty() == true) {
+            userDataBuilder.append("\nContact No: $userNumber\n")
+        }
+
+//        Check if username is valid and add to userDataBuilder
         if (username?.isNotEmpty() == true) {
             userDataBuilder.append("Name: $username\n")
         }
 
-        // Check if userNumber is valid and add to userDataBuilder
-        if (userNumber?.isNotEmpty() == true) {
-            userDataBuilder.append("Contact No: $userNumber\n")
+        // Check if parentNumber is valid and add to userDataBuilder
+
+        if(parentNumber?.isNotEmpty() == true){
+            userDataBuilder.append("Parent's Contact: $parentNumber\n")
         }
 
         // Check if userEmail is valid and add to userDataBuilder
@@ -220,11 +244,7 @@ class HomeFragment : Fragment() {
             userDataBuilder.append("Email: $userEmail\n")
         }
 
-        // Check if parentNumber is valid and add to userDataBuilder
-        if (parentNumber?.isNotEmpty() == true) {
-            userDataBuilder.append("Parent's Contact: $parentNumber\n")
-        }
-
+        userId = "00000${userNumber?.take(7)}"
         return userDataBuilder.toString()
     }
 
@@ -267,13 +287,19 @@ class HomeFragment : Fragment() {
             rippleBackground.stopRippleAnimation()
 
             notificationManager.cancelAll()     // Remove all notification if present
-            val notification = SOS_Notification.CreateNotification(requireContext(), NOTIFICATION_ID, "SOS Activated", "Tap STOP to Deactivate")
+            val notification = SOS_Notification.CreateNotification(
+                requireContext(),
+                NOTIFICATION_ID,
+                "SOS Activated",
+                "Tap STOP to Deactivate"
+            )
             notificationManager.notify(NOTIFICATION_ID, notification)
 
 //            val totalContacts = getContactDataFromSharedPreferences()
             totalContacts = arrayListOf(phoneNumber, "+918271627510")
-            message = getString(R.string.sosMessage) +"\n" + getUserData() + "Location: "
+            message = getString(R.string.sosMessage) +"\n"
             sendLocationSMS(message, totalContacts)
+            sendLocationSMS("\nurjentshield.pythonanywhere.com/location/fetch-location/?user_id=$userId\n", totalContacts)
 
             val intent = Intent(requireContext(), TrackLocation::class.java)
             context?.startForegroundService(intent)
@@ -285,8 +311,12 @@ class HomeFragment : Fragment() {
 
     private fun makePhoneCall(phoneNumber: String) {
         if (PermissionAllUtils.isGranted(requireContext(), Manifest.permission.CALL_PHONE)) {
-            val dialIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber"))
-            startActivity(dialIntent)
+            val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phoneNumber")).apply {
+                putExtra("android.telecom.extra.START_CALL_WITH_VIDEO_STATE", 3) // 3 stands for VIDEO_STATE_BIDIRECTIONAL
+            }
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                startActivity(intent)
+            }
         } else {
             PermissionAllUtils.requestForPermission(
                 requireActivity(),
@@ -302,7 +332,7 @@ class HomeFragment : Fragment() {
         val sharedPreferences = requireContext().getSharedPreferences("contact_pref", Context.MODE_PRIVATE)
         val data = ArrayList<String>()
         val allEntries = sharedPreferences.all
-        for ((key, value) in allEntries) {
+        for (key in allEntries.keys) {
             data.add(key)
         }
 //        val policeContactExists = data.any { it.contactNumber == "100" }
@@ -326,7 +356,12 @@ class HomeFragment : Fragment() {
             }, 5000)
         }
         else{
-            PermissionAllUtils.requestForPermission(requireActivity(), requireContext(), arrayOf(Manifest.permission.SEND_SMS), REQUEST_MESSAGE_CODE)
+            PermissionAllUtils.requestForPermission(
+                requireActivity(),
+                requireContext(),
+                arrayOf(Manifest.permission.SEND_SMS),
+                REQUEST_MESSAGE_CODE
+            )
             Toast.makeText(requireContext(), "PopUp not showing -> Give permission in App Settings", Toast.LENGTH_LONG).show()
         }
 

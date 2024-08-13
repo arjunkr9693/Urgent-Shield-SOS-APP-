@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.ui.homeFragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -14,6 +14,10 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.Manifest
 import androidx.fragment.app.Fragment
+import com.example.urgentshield.data.Contact
+import com.example.urgentshield.adapters.ContactListAdapter
+import com.example.urgentshield.PermissionAllUtils
+import com.example.urgentshield.R
 
 
 class ContactFragment : Fragment() {
@@ -32,7 +36,7 @@ class ContactFragment : Fragment() {
         data = ArrayList()
         data = getDataFromSharedPreferences()
         val listView = view.findViewById<ListView>(R.id.listView)
-        listView.adapter = MyAdapter(requireActivity(), data)
+        listView.adapter = ContactListAdapter(requireActivity(), data)
 
         val addBtn = view.findViewById<ImageView>(R.id.addContact)
         addBtn.setOnClickListener {
@@ -106,7 +110,7 @@ class ContactFragment : Fragment() {
 
                 val data = getDataFromSharedPreferences()
                 val listView = view?.findViewById<ListView>(R.id.listView)
-                val adapter = listView?.adapter as? MyAdapter
+                val adapter = listView?.adapter as? ContactListAdapter
                 adapter?.apply {
                     clear()
                     addAll(data)

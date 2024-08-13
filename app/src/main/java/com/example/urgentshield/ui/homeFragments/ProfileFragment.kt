@@ -1,4 +1,4 @@
-package com.example.urgentshield
+package com.example.urgentshield.ui.homeFragments
 
 import android.app.Activity
 import android.content.Context
@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.example.urgentshield.ui.ProfileInput
+import com.example.urgentshield.R
 
 
 class ProfileFragment : Fragment() {
